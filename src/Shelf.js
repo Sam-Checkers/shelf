@@ -1,20 +1,16 @@
-import React from 'react';
-
-const Shelf = ({ shelf }) => {
+const Shelf = ({ selectedWine }) => {
   return (
     <div>
-      <h2>Your Shelf:</h2>
-      <ul>
-        {shelf.map((wine) => (
-          <li key={wine.id}>
-            <div>
-              {wine.name} - {wine.type} - {wine.region}
-            </div>
-            <div>
-            </div>
-          </li>
-        ))}
-      </ul>
+      <h1>Selected Wine</h1>
+      {selectedWine ? (
+        <div>
+          <p>Name: {selectedWine.name}</p>
+          <p>Type: {selectedWine.type}</p>
+          <p>Region: {selectedWine.region}</p>
+        </div>
+      ) : (
+        <p>No wine selected</p>
+      )}
     </div>
   );
 };

@@ -1,59 +1,35 @@
-import React, { useState, useEffect } from 'react';
-import LoginForm from './LoginForm';
+import React from 'react';
+import { BrowserRouter as Router } from 'react-router-dom';
+import { useAuth0 } from '@auth0/auth0-react';
+import Home from './Home';
+import Login from './Login';
+import Register from './Register';
+import Profile from './Profile';
+import Navbar from './Navbar';
+import Inventory from './Inventory';
 import Shelf from './Shelf';
 
 function App() {
-  const [user, setUser] = useState(null);
-  const [shelf, setShelf] = useState([]);
+  const { isLoading } = useAuth0();
 
-  const handleLogin = async (credentials) => {
-    try {
-      const response = await fetch('https://winery-1.onrender.com/login', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(credentials),
-      });
-      if (response.ok) {
-        const userData = await response.json();
-        setUser(userData);
-      } else {
-      }
-    } catch (error) {
-    }
-  };
+  if (isLoading) {
+    return <div>Loading...</div>;
+  }
 
-  const fetchShelf = async () => {
-    try {
-      const response = await fetch('https://winery-1.onrender.com/home', {
-        headers: {
-          Authorization: `Bearer ${user.token}`,
-        },
-      });
-      if (response.ok) {
-        const shelfData = await response.json();
-        setShelf(shelfData);
-      } else {
-      }
-    } catch (error) {
-    }
-  };
-
-  useEffect(() => {
-    if (user) {
-      fetchShelf();
-    }
-  }, [user]);
+  const path = window.location.pathname;
 
   return (
-    <div>
-      {user ? (
-        <Shelf shelf={shelf} />
-      ) : (
-        <LoginForm onLogin={handleLogin} />
-      )}
-    </div>
+    <Router>
+      <div>
+        <Navbar />
+        {path === '/' && <Home />}
+        {path === '/login' && <Login />}
+        {path === '/register' && <Register />}
+        {path === '/profile' && <Profile />}
+        {path === '/inventory' && <Inventory />}
+        {path === '/shelf' && <Shelf />}
+      </div>
+    </Router>
   );
 }
 
