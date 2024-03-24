@@ -6,6 +6,8 @@ import Register from './Register';
 import Navbar from './Navbar';
 import Inventory from './Inventory';
 import Error from './Error';
+import Profile from './Profile'
+import Wines from './Wines'
 
 function App() {
   const { isLoading, isAuthenticated } = useAuth0();
@@ -25,8 +27,12 @@ function App() {
   if (path === '/login') {
     content = <Login />;
   } else if (path === '/register') {
-    content = <Register />;
-  } else {
+    content = <Register />; }
+    else if (path === '/profile') {
+      content = <Profile />; }
+    else if (path === '/wines') {
+      content = <Wines />; }
+   else {
     content = <Inventory />;
   }
 
