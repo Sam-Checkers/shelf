@@ -37,7 +37,7 @@ const Navbar = () => {
         {!isAuthenticated && <li style={liStyle}><button style={buttonStyle} onClick={() => loginWithRedirect({ screen_hint: 'signup' })}>Register</button></li>}
         {isAuthenticated && <li style={liStyle}><a href="/inventory" style={linkStyle}>Inventory</a></li>}
         {isAuthenticated && <li style={liStyle}><a href="/profile" style={linkStyle}>Profile</a></li>}
-        {isAuthenticated && <li style={liStyle}><button style={buttonStyle} onClick={() => logout({ returnTo: 'https://heroic-malabi-86afd5.netlify.app' })}>Log Out</button></li>}
+        {isAuthenticated && <li style={liStyle}><button style={buttonStyle} onClick={() => logout({ returnTo: 'https://ephemeral-kheer-f078b9.netlify.app' })}>Log Out</button></li>}
       </ul>
     </nav>
   );
