@@ -1,4 +1,4 @@
-import { Auth0Provider } from '@auth0/auth0-react';
+import { Auth0Provider } from '@auth0/auth0-react'; //why or where to use?
 
 const Auth0ProviderConfig = {
   domain: 'dev-44w2oefzt0a2lc21.us.auth0.com',

@@ -26,11 +26,11 @@ function App() {
 
   if (path === '/login') {
     content = <Login />;
-  } else if (path === '/register') {
+  } else if (path == '/register') {
     content = <Register />; }
-    else if (path === '/profile') {
+    else if (path == '/profile') {
       content = <Profile />; }
-    else if (path === '/wines') {
+    else if (path == '/wines') {
       content = <Wines />; }
    else {
     content = <Inventory />;
